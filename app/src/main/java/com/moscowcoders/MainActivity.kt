@@ -1,4 +1,6 @@
 package com.moscowcoders
 
-class MainActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity: AppCompatActivity() {
 }

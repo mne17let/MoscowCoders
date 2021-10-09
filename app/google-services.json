@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "124824680924",
+    "project_id": "moscowcoders",
+    "storage_bucket": "moscowcoders.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124824680924:android:d60afca99cc48652b9b719",
+        "android_client_info": {
+          "package_name": "com.moscowcoders"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124824680924-mogdb3bgaai5u8p3hr426cng3ds1vqp0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moscowcoders",
+            "certificate_hash": "0a6bca4c010a780d24d1ef9703fe85dd836c3994"
+          }
+        },
+        {
+          "client_id": "124824680924-j7qu2ggqmn9s1bnhvea640rpjtm28itt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhjxDGHNgLzBu2Nyvp_KM3yVgxqSbjvuI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124824680924-j7qu2ggqmn9s1bnhvea640rpjtm28itt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
