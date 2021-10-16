@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/item_list_sport_objects_background"
+
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/id_title_item_list_sport_objects"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/item_list_sport_objects_title"
+        android:gravity="center"
+        android:paddingVertical="8dp"
+        android:text="Спортивный зал"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/id_photo_item_sport_object"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sportzal_example"
+        app:layout_constraintTop_toBottomOf="@id/id_title_item_list_sport_objects"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/id_status_item_sport_object"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:background="@color/status_open_item_list_sport_objects_title"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Открыто"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/id_title_item_list_sport_objects"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/id_photo_item_sport_object"/>
+
+    <Button
+        android:id="@+id/id_button_make_request_item_sport_object"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:backgroundTint="@color/button_make_request_item_list_sport_objects_title"
+        android:text="@string/make_request"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@id/id_status_item_sport_object"
+        app:layout_constraintLeft_toLeftOf="@id/id_status_item_sport_object"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

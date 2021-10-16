@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="item_list_sport_objects_title">#BABABA</color>
+
+    <color name="item_list_sport_objects_background">#DADADA</color>
+
+    <color name="status_open_item_list_sport_objects_title">#4CAF50</color>
+    <color name="status_closed_item_list_sport_objects_title">#FF0000</color>
+
+    <color name="button_make_request_item_list_sport_objects_title">#FF9800</color>
 </resources>
