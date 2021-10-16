@@ -3,8 +3,10 @@ package com.moscowcoders.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.moscowcoders.R
 import com.moscowcoders.data.SportObjectModel
 
@@ -33,9 +35,11 @@ class SportObjectViewHolder(newView: View): RecyclerView.ViewHolder(newView){
 
     private val status: TextView = itemView.findViewById(R.id.id_status_item_sport_object)
     private val title: TextView = itemView.findViewById(R.id.id_title_item_list_sport_objects)
+    private val imageView: ImageView = itemView.findViewById(R.id.id_photo_item_sport_object)
 
     fun bind(data: SportObjectModel){
         status.text = data.isOpen.toString()
         title.text = data.name
+        Glide.with(imageView).load(data.image_url).into(imageView)
     }
 }

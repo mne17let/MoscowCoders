@@ -22,14 +22,16 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects) {
     private lateinit var recycler: RecyclerView
     private lateinit var adapter: ListSportObjectsAdapter
 
-    private val list = mutableListOf(
+    /*private val list = mutableListOf(
         SportObjectModel(id = "id_1", name = "Спортивный зал", isOpen = true),
         SportObjectModel(id = "id_2", name = "Фитнес зал", isOpen = false),
         SportObjectModel(id = "id_2", name = "Фитнес зал", isOpen = true),
         SportObjectModel(id = "id_2", name = "Фитнес зал", isOpen = true),
         SportObjectModel(id = "id_2", name = "Фитнес зал", isOpen = false),
         SportObjectModel(id = "id_2", name = "Фитнес зал", isOpen = true)
-    )
+    )*/
+
+    private val list = mutableListOf<SportObjectModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
