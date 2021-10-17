@@ -9,6 +9,19 @@
     <color name="white">#FFFFFFFF</color>
 
 
+    <color name="main_white">#FFF1C1</color>
+    <color name="main_brown">#A64942</color>
+    <color name="main_blue">#293462</color>
+    <color name="main_pink">#FE5F55</color>
+    <color name="main_blue60">#99293462</color>
+
+    <color name="black70">#B3000000</color>
+    <color name="transparent100">#00000000</color>
+
+
+
+
+
     <color name="item_list_sport_objects_title">#BABABA</color>
 
     <color name="item_list_sport_objects_background">#DADADA</color>

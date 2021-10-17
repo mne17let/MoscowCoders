@@ -1,6 +1,18 @@
 <resources>
     <string name="app_name">MoscowCoders</string>
 
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="back">Назад</string>
+    <string name="login">Войти</string>
+    <string name="create">Создать</string>
+    <string name="register">Регистрация</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="account_repair">Восстановление аккаунта</string>
+    <string name="accept">Подтвердить</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="input_again">Введите еще раз</string>
+
     <string name="make_request">Записаться</string>
 
     <string name="object_is_available">Открыто</string>

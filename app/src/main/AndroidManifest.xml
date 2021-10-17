@@ -23,6 +23,21 @@
 
         </activity>
 
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:label = "ForgotPasswordActivity">
+        </activity>
+
+        <activity
+            android:name=".ForgotPasswordActivity2"
+            android:label = "ForgotPasswordActivity2">
+        </activity>
+
+        <activity
+            android:name=".RecordsActivity"
+            android:label = "RecordsActivity">
+        </activity>
+
     </application>
 
 </manifest>
