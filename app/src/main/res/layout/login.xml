@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/login_and_reg_box"
-        android:src="@drawable/add_user_128"
+        android:src="@color/transparent100"
         android:backgroundTint="@color/transparent100"
         android:scaleX="0.75"
         android:scaleY="0.75"
