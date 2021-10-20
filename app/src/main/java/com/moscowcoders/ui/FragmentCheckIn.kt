@@ -68,6 +68,8 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
     private fun setNewData(){
         id_textview.text = currentObjectData?.id
         name_textview.text = currentObjectData?.name
-        days_textview.text = currentObjectData?.days.toString()
+        //days_textview.text = currentObjectData?.days.toString()
+        days_textview.text = currentObjectData?.mapForList().toString()
+        currentObjectData?.getKeys()
     }
 }
