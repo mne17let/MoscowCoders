@@ -2,34 +2,26 @@ package com.moscowcoders.ui
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import com.moscowcoders.MainActivity
 import com.moscowcoders.R
-import com.moscowcoders.data.SportObjectModel
+import com.moscowcoders.data.models.SportObjectModel
 
-class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects) {
+class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
+    ListSportObjectsAdapter.OnClickListener {
 
     private val TAG_FRAGMENT = "FragmentListSportObjects"
 
+    // Firebase
     private val fDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
     private val myReference: DatabaseReference = fDatabase.getReference("sport_objects_data")
 
     private lateinit var recycler: RecyclerView
     private lateinit var adapter: ListSportObjectsAdapter
-
-    /*private val list = mutableListOf(
-        SportObjectModel(id = "id_1", name = "Спортивный зал", isOpen = true),
-        SportObjectModel(id = "id_2", name = "Фитнес зал", isOpen = false),
-        SportObjectModel(id = "id_2", name = "Фитнес зал", isOpen = true),
-        SportObjectModel(id = "id_2", name = "Фитнес зал", isOpen = true),
-        SportObjectModel(id = "id_2", name = "Фитнес зал", isOpen = false),
-        SportObjectModel(id = "id_2", name = "Фитнес зал", isOpen = true)
-    )*/
 
     private val list = mutableListOf<SportObjectModel>()
 
@@ -44,7 +36,7 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects) {
 
     private fun setRecyclerView(){
         recycler.layoutManager = LinearLayoutManager(requireContext())
-        adapter = ListSportObjectsAdapter()
+        adapter = ListSportObjectsAdapter(this)
         recycler.adapter = adapter
     }
 
@@ -72,7 +64,9 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects) {
                     list.add(newSportObject)
                 }
 
-                Log.d(TAG_FRAGMENT, "Ответ: ${oneSnapshot}. Мой объект: ${newSportObject}")
+                Log.d(TAG_FRAGMENT, "Ответ: ${oneSnapshot}")
+
+                Log.d(TAG_FRAGMENT, "Мой объект: ${newSportObject}")
             }
 
             setNewListForAdapter()
@@ -81,5 +75,10 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects) {
         override fun onCancelled(error: DatabaseError) {
             Log.d(TAG_FRAGMENT, "Код ошибки: ${error.code}. Ошибка: ${error.message}")
         }
+    }
+
+    override fun onClick(id: String) {
+        Log.d(TAG_FRAGMENT, "Во фрагменте получено: $id")
+        (activity as MainActivity).showCheckInFragment(id)
     }
 }

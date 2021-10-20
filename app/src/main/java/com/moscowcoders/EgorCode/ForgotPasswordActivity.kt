@@ -1,10 +1,11 @@
-package com.moscowcoders
+package com.moscowcoders.EgorCode
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.moscowcoders.MainActivity
+import com.moscowcoders.R
 
 class ForgotPasswordActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

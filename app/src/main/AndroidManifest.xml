@@ -3,6 +3,7 @@
     package="com.moscowcoders">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -24,19 +25,19 @@
         </activity>
 
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".EgorCode.ForgotPasswordActivity"
             android:theme="@style/Theme.MoscowCoders.NoActionBar">
             android:label = "ForgotPasswordActivity">
         </activity>
 
         <activity
-            android:name=".ForgotPasswordActivity2"
+            android:name=".EgorCode.ForgotPasswordActivity2"
             android:theme="@style/Theme.MoscowCoders.NoActionBar">
             android:label = "ForgotPasswordActivity2">
         </activity>
 
         <activity
-            android:name=".RecordsActivity"
+            android:name=".EgorCode.EgorMainActivity"
             android:theme="@style/Theme.MoscowCoders.NoActionBar">
             android:label = "RecordsActivity">
         </activity>
