@@ -10,10 +10,15 @@ import com.google.firebase.database.*
 import com.moscowcoders.MainActivity
 import com.moscowcoders.R
 import com.moscowcoders.data.models.SportObjectModel
+import com.moscowcoders.ui.value_event_listeners.SportObjectsListListener
+import java.util.*
+
+// Класс фрагмента со списком спортивных объектов
 
 class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
     ListSportObjectsAdapter.OnClickListener {
 
+    // Тег для логов
     private val TAG_FRAGMENT = "FragmentListSportObjects"
 
     // Firebase
@@ -45,35 +50,13 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
     }
 
     private fun setDataSportObjectsChanged(){
-        myReference.addValueEventListener(MyValueEventListener())
-    }
+        val listener = SportObjectsListListener()
+        listener.setList(list)
+        myReference.addValueEventListener(listener)
 
-    private inner class MyValueEventListener: ValueEventListener{
-
-        override fun onDataChange(snapshot: DataSnapshot) {
-
-            list.clear()
-
-            for (oneSnapshot: DataSnapshot in snapshot.children){
-                val newSportObject: SportObjectModel? = oneSnapshot.getValue(SportObjectModel::class.java)
-
-                val isOpen = oneSnapshot.child("isOpen").value
-
-                if (newSportObject != null){
-                    newSportObject.isOpen = isOpen as Boolean
-                    list.add(newSportObject)
-                }
-
-                Log.d(TAG_FRAGMENT, "Ответ: ${oneSnapshot}")
-
-                Log.d(TAG_FRAGMENT, "Мой объект: ${newSportObject}")
-            }
-
+        listener.liveData.observe(viewLifecycleOwner) {
+            list.addAll(it)
             setNewListForAdapter()
-        }
-
-        override fun onCancelled(error: DatabaseError) {
-            Log.d(TAG_FRAGMENT, "Код ошибки: ${error.code}. Ошибка: ${error.message}")
         }
     }
 

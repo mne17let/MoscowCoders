@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.moscowcoders.ui.FragmentCheckIn
 import com.moscowcoders.ui.FragmentListSportObjects
 
+// Класс единственного Activity в приложении
+
 class MainActivity: AppCompatActivity() {
 
+    // Тег для логов
     private val TAG_ACTIVITY = "MyMainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {

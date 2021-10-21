@@ -9,8 +9,11 @@ import com.google.firebase.database.*
 import com.moscowcoders.R
 import com.moscowcoders.data.models.SportObjectModel
 
+// Класс фрагмента выбора времени и отправки заявки на посещение спортивного объекта
+
 class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
 
+    // Тег для логов
     private val TAG_FRAGMENT = "FragmentCheckIn"
 
     private var id: String? = null

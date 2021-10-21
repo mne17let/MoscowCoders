@@ -12,8 +12,11 @@ import com.bumptech.glide.Glide
 import com.moscowcoders.R
 import com.moscowcoders.data.models.SportObjectModel
 
+// Класс адаптера для списка спортивных объектов
+
 class ListSportObjectsAdapter(private val clickListener: OnClickListener): RecyclerView.Adapter<ListSportObjectsAdapter.SportObjectViewHolder>() {
 
+    // Тег для логов
     private val TAG_ADAPTER = "SportObjectsListAdapter"
 
     private var list = emptyList<SportObjectModel>()

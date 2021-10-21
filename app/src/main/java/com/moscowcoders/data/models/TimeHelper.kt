@@ -4,6 +4,8 @@ import android.util.Log
 import java.text.SimpleDateFormat
 import java.util.*
 
+// Класс для сортировки объектов List, Map и конвертации строк во время и дату и обратно
+
 class TimeHelper {
 
     fun getCurrentTime(): Date{

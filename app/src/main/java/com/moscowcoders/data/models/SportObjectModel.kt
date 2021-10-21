@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
+// Модель спортивного объекта
+
 data class SportObjectModel(
     val id: String? = null,
     val name: String? = null,
@@ -12,6 +14,7 @@ data class SportObjectModel(
     var isOpen: Boolean? = false,
     val days: HashMap<String, HashMap<String, Period>>? = null
 ) {
+    // Тег для логов
     private val TAG_MODEL = "ModelTag"
 
     private val timeHelper = TimeHelper()
