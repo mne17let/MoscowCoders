@@ -1,8 +1,6 @@
-package com.moscowcoders.ui.value_event_listeners
+package com.moscowcoders.ui.server_listeners
 
-import android.media.MediaParser
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -14,7 +12,7 @@ import com.moscowcoders.data.models.SportObjectModel
 class SportObjectsListListener : ValueEventListener {
 
     // Тег для логов
-    private val TAG_VALUEEVENTLISTENER = "SportObjectsListListener"
+    private val TAG_VALUEEVENTLISTENER = "MySportObjectsListListener"
     private var list = mutableListOf<SportObjectModel>()
     val liveData: MutableLiveData<MutableList<SportObjectModel>> = MutableLiveData()
 
@@ -23,6 +21,8 @@ class SportObjectsListListener : ValueEventListener {
     }
 
     override fun onDataChange(snapshot: DataSnapshot) {
+
+        Log.d(TAG_VALUEEVENTLISTENER, "Ответ сразу после приёма: ${snapshot}")
 
         list.clear()
 

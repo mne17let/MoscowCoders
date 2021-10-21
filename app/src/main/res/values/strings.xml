@@ -4,6 +4,7 @@
     <string name="forgot_password">Забыли пароль?</string>
     <string name="back">Назад</string>
     <string name="login">Войти</string>
+    <string name="sign_up">Зарегистрироваться</string>
     <string name="create">Создать</string>
     <string name="register">Регистрация</string>
     <string name="email">Email</string>
@@ -17,4 +18,5 @@
 
     <string name="object_is_available">Открыто</string>
     <string name="object_is_not_available">Закрыто</string>
+    <string name="new_avatar">new avatar</string>
 </resources>

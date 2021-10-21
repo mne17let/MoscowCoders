@@ -1,4 +1,4 @@
-package com.moscowcoders.ui
+package com.moscowcoders.ui.list
 
 import android.os.Bundle
 import android.util.Log
@@ -10,8 +10,7 @@ import com.google.firebase.database.*
 import com.moscowcoders.MainActivity
 import com.moscowcoders.R
 import com.moscowcoders.data.models.SportObjectModel
-import com.moscowcoders.ui.value_event_listeners.SportObjectsListListener
-import java.util.*
+import com.moscowcoders.ui.server_listeners.SportObjectsListListener
 
 // Класс фрагмента со списком спортивных объектов
 

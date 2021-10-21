@@ -1,4 +1,4 @@
-package com.moscowcoders.EgorCode
+/*package com.moscowcoders.EgorCode
 
 import android.content.Intent
 import android.os.Bundle
@@ -20,4 +20,4 @@ class ForgotPasswordActivity2: AppCompatActivity() {
     fun accountRecAcceptFinal(view: View) {
         startActivity(Intent(this, EgorMainActivity::class.java))
     }
-}
+}*/

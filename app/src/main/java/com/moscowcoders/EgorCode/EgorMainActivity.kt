@@ -1,4 +1,4 @@
-package com.moscowcoders.EgorCode
+/*package com.moscowcoders.EgorCode
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,7 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.transition.TransitionManager
 
 import com.moscowcoders.R
-import com.moscowcoders.ui.FragmentListSportObjects
+import com.moscowcoders.ui.list.FragmentListSportObjects
 
 //import android.R
 
@@ -36,16 +36,16 @@ class EgorMainActivity: AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.id_frame_container, FragmentListSportObjects())
             .commit()
 
-        setContentView(R.layout.login)
+        setContentView(R.layout.fragment_login)
 
 
 
-        reg_button = findViewById<View>(R.id.reg_button) as TextView
+        *//*reg_button = findViewById<View>(R.id.reg_button) as TextView
         log_in_button = findViewById<View>(R.id.log_in_button) as TextView
         forgot_password = findViewById<View>(R.id.forgot_password) as TextView
         main_log_in_button = findViewById<View>(R.id.main_log_in_button) as Button
         add_user = findViewById<View>(R.id.add_user) as ImageButton
-        constraint_layout = findViewById<View>(R.id.log_reg_button_box) as ConstraintLayout
+        constraint_layout = findViewById<View>(R.id.log_reg_button_box) as ConstraintLayout*//*
     }
 
 
@@ -65,7 +65,7 @@ class EgorMainActivity: AppCompatActivity() {
         log_in_button.setTextColor(getResources().getColor(R.color.main_blue60, null))
         forgot_password.visibility = View.INVISIBLE
         main_log_in_button.setText(R.string.create)
-        add_user.setImageResource(R.drawable.add_user_128)
+        add_user.setImageResource(R.drawable.ic_add_avatar)
 
         val set = ConstraintSet()
         set.clone(constraint_layout)
@@ -74,10 +74,10 @@ class EgorMainActivity: AppCompatActivity() {
         set.applyTo(constraint_layout)
     }
 
-    private fun changeConstraints_reg(set: ConstraintSet) {
+    *//*private fun changeConstraints_reg(set: ConstraintSet) {
         set.clear(R.id.log_in_button, ConstraintSet.END)
         set.connect(R.id.reg_button, ConstraintSet.START, R.id.log_reg_button_box, ConstraintSet.START);
-    }
+    }*//*
 
 
     fun logInClick(view: View) {
@@ -101,4 +101,4 @@ class EgorMainActivity: AppCompatActivity() {
         set.connect(R.id.log_in_button, ConstraintSet.END, R.id.log_reg_button_box, ConstraintSet.END);
     }
 
-}
+}*/

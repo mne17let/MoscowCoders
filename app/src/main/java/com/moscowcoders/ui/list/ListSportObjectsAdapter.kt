@@ -1,4 +1,4 @@
-package com.moscowcoders.ui
+package com.moscowcoders.ui.list
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -39,7 +39,8 @@ class ListSportObjectsAdapter(private val clickListener: OnClickListener): Recyc
 
 
     class SportObjectViewHolder(newView: View,
-                                private val clickListener: OnClickListener): RecyclerView.ViewHolder(newView){
+                                private val clickListener: OnClickListener
+    ): RecyclerView.ViewHolder(newView){
 
         private val status: TextView = itemView.findViewById(R.id.id_status_item_sport_object)
         private val title: TextView = itemView.findViewById(R.id.id_title_item_list_sport_objects)

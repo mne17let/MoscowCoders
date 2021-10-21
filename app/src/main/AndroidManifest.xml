@@ -12,7 +12,8 @@
         android:theme="@style/Theme.MoscowCoders">
 
         <activity android:name=".MainActivity"
-            android:theme="@style/Theme.MoscowCoders.NoActionBar">
+            android:theme="@style/Theme.MoscowCoders.NoActionBar"
+            android:screenOrientation="portrait">
 
             <intent-filter>
 
@@ -22,24 +23,6 @@
 
             </intent-filter>
 
-        </activity>
-
-        <activity
-            android:name=".EgorCode.ForgotPasswordActivity"
-            android:theme="@style/Theme.MoscowCoders.NoActionBar">
-            android:label = "ForgotPasswordActivity">
-        </activity>
-
-        <activity
-            android:name=".EgorCode.ForgotPasswordActivity2"
-            android:theme="@style/Theme.MoscowCoders.NoActionBar">
-            android:label = "ForgotPasswordActivity2">
-        </activity>
-
-        <activity
-            android:name=".EgorCode.EgorMainActivity"
-            android:theme="@style/Theme.MoscowCoders.NoActionBar">
-            android:label = "RecordsActivity">
         </activity>
 
     </application>

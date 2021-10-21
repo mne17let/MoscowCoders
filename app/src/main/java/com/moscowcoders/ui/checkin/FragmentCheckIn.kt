@@ -1,4 +1,4 @@
-package com.moscowcoders.ui
+package com.moscowcoders.ui.checkin
 
 import android.os.Bundle
 import android.util.Log
