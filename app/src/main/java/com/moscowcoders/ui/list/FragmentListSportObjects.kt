@@ -61,6 +61,6 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
 
     override fun onClick(id: String) {
         Log.d(TAG_FRAGMENT, "Во фрагменте получено: $id")
-        (activity as MainActivity).showCheckInFragment(id)
+        (activity as MainActivity).showCheckInOrLoginFragment(id)
     }
 }
