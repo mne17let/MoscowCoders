@@ -38,6 +38,7 @@ class MainActivity: AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.id_frame_container, newFragment)
+            .addToBackStack(null)
             .commit()
     }
 }

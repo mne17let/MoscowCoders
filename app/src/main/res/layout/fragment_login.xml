@@ -29,6 +29,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:text="@string/at_first_log_in"
+            android:textColor="@color/main_blue"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:layout_marginVertical="32dp"/>
+
         <LinearLayout
             android:id="@+id/id_box_sign_in_up_textviews"
 

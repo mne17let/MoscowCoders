@@ -14,6 +14,8 @@
     <string name="new_password">Новый пароль</string>
     <string name="input_again">Введите еще раз</string>
 
+    <string name="at_first_log_in">Для начала, выполните вход или зарегистрируйтесь</string>
+
     <string name="make_request">Записаться</string>
 
     <string name="object_is_available">Открыто</string>
