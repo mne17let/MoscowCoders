@@ -1,4 +1,4 @@
-package com.moscowcoders.data.models
+package com.moscowcoders.data.models.sport_objects
 
 // Модель временного промежутка, когда спортивный объект доступен для посещения
 

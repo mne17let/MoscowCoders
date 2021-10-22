@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.moscowcoders.MainActivity
 import com.moscowcoders.R
-import com.moscowcoders.data.models.SportObjectModel
+import com.moscowcoders.data.models.sport_objects.SportObjectModel
 import com.moscowcoders.ui.server_listeners.SportObjectsListListener
 
 // Класс фрагмента со списком спортивных объектов
@@ -61,6 +61,6 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
 
     override fun onClick(id: String) {
         Log.d(TAG_FRAGMENT, "Во фрагменте получено: $id")
-        (activity as MainActivity).showCheckInOrLoginFragment(id)
+        //(activity as MainActivity).showCheckInOrLoginFragment(id)
     }
 }

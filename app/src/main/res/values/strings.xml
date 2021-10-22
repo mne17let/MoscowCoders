@@ -21,4 +21,19 @@
     <string name="object_is_available">Открыто</string>
     <string name="object_is_not_available">Закрыто</string>
     <string name="new_avatar">new avatar</string>
+    <string name="input_your_information">Заполните информацию о себе</string>
+
+    <string name="hint_input_pass">Введите пароль</string>
+    <string name="hint_input_email">Введите почту</string>
+
+    <string name="hint_input_first_name">Введите имя</string>
+    <string name="hint_input_last_name">Введите фамилию</string>
+    <string name="hint_input_gender">Укажите ваш пол</string>
+    <string name="hint_input_study_group">Введите вашу группу</string>
+    <string name="hint_input_study_year">Укажите ваш курс</string>
+    <string name="hint_input_faculty">Укажите ваш факультет</string>
+    <string name="hint_input_bio_or_favourite_sports">Напишите краткую информацию о том, какими видами спорта вы занимаетесь</string>
+
+    <string name="item_gender_male">Мужчина</string>
+    <string name="item_gender_female">Мужчина</string>
 </resources>

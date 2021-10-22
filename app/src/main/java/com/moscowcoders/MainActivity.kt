@@ -17,15 +17,15 @@ class MainActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.fragment_create_profile)
 
-        supportFragmentManager
+        /*supportFragmentManager
             .beginTransaction()
             .replace(R.id.id_frame_container, FragmentListSportObjects())
-            .commit()
+            .commit()*/
     }
 
-    fun showCheckInOrLoginFragment(id: String){
+    /*fun showCheckInOrLoginFragment(id: String){
 
         val authenticationHelper = AuthenticationHelper()
         val currentUser = authenticationHelper.getCurrentUser()
@@ -62,5 +62,5 @@ class MainActivity: AppCompatActivity() {
             .replace(R.id.id_frame_container, newFragment)
             .addToBackStack(null)
             .commit()
-    }
+    }*/
 }

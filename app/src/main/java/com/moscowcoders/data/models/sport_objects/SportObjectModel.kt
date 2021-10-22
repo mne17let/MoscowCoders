@@ -1,7 +1,6 @@
-package com.moscowcoders.data.models
+package com.moscowcoders.data.models.sport_objects
 
 import android.util.Log
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 

@@ -1,6 +1,6 @@
 package com.moscowcoders.data
 
-import com.moscowcoders.data.models.SportObjectModel
+import com.moscowcoders.data.models.sport_objects.SportObjectModel
 import com.moscowcoders.interfaces.IRepository
 
 class Repository: IRepository {

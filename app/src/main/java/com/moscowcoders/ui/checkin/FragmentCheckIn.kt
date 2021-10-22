@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.*
 import com.moscowcoders.R
-import com.moscowcoders.data.models.SportObjectModel
+import com.moscowcoders.data.models.sport_objects.SportObjectModel
 
 // Класс фрагмента выбора времени и отправки заявки на посещение спортивного объекта
 

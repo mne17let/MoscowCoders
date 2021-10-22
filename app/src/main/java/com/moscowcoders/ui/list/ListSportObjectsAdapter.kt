@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.moscowcoders.R
-import com.moscowcoders.data.models.SportObjectModel
+import com.moscowcoders.data.models.sport_objects.SportObjectModel
 
 // Класс адаптера для списка спортивных объектов
 
