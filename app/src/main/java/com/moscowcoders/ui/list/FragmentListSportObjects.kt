@@ -32,6 +32,15 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        val listOfNames = mutableListOf<String>()
+        for(i in list){
+            i.name?.let { listOfNames.add(it) }
+        }
+
+        Log.d(TAG_FRAGMENT, "Список в onViewCreated: ${listOfNames}")
+
+
         recycler = view.findViewById(R.id.id_recyclerview_list_sport_objects)
 
         setRecyclerView()
@@ -50,17 +59,38 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
 
     private fun setDataSportObjectsChanged(){
         val listener = SportObjectsListListener()
-        listener.setList(list)
+
         myReference.addValueEventListener(listener)
 
-        listener.liveData.observe(viewLifecycleOwner) {
-            list.addAll(it)
+        listener.liveData.observe(viewLifecycleOwner) { newList ->
+
+            val listOfNames = mutableListOf<String>()
+            for(i in list){
+                i.name?.let { listOfNames.add(it) }
+            }
+
+            Log.d(TAG_FRAGMENT, "Старый список после обновления лайвдаты: ${listOfNames}")
+
+            list.clear()
+
+            list.addAll(newList)
+
+            val listOfNewNames = mutableListOf<String>()
+            for(i in list){
+                i.name?.let { listOfNewNames.add(it) }
+            }
+
+            //Log.d(TAG_FRAGMENT, "Новый список после обновления лайвдаты: ${list}")
+
             setNewListForAdapter()
+
+            Log.d(TAG_FRAGMENT, "Новый список после обновления лайвдаты: ${listOfNewNames}")
+
         }
     }
 
     override fun onClick(id: String) {
         Log.d(TAG_FRAGMENT, "Во фрагменте получено: $id")
-        //(activity as MainActivity).showCheckInOrLoginFragment(id)
+        (activity as MainActivity).showCheckInOrLoginFragment(id)
     }
 }

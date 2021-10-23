@@ -7,6 +7,7 @@ import com.moscowcoders.ui.authentication.AuthenticationHelper
 import com.moscowcoders.ui.authentication.LoginFragment
 import com.moscowcoders.ui.checkin.FragmentCheckIn
 import com.moscowcoders.ui.list.FragmentListSportObjects
+import com.moscowcoders.ui.profile.CreateProfileFragment
 
 // Класс единственного Activity в приложении
 
@@ -17,15 +18,12 @@ class MainActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_create_profile)
+        setContentView(R.layout.activity_main)
 
-        /*supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.id_frame_container, FragmentListSportObjects())
-            .commit()*/
+        showSportObjectsList()
     }
 
-    /*fun showCheckInOrLoginFragment(id: String){
+    fun showCheckInOrLoginFragment(id: String){
 
         val authenticationHelper = AuthenticationHelper()
         val currentUser = authenticationHelper.getCurrentUser()
@@ -36,6 +34,17 @@ class MainActivity: AppCompatActivity() {
             showCheckInFragment(id)
         }
 
+    }
+
+    fun showSportObjectsListAfterLogIn(){
+        showSportObjectsList()
+    }
+
+    private fun showSportObjectsList(){
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.id_frame_container, FragmentListSportObjects())
+            .commit()
     }
 
     private fun showCheckInFragment(id: String){
@@ -62,5 +71,14 @@ class MainActivity: AppCompatActivity() {
             .replace(R.id.id_frame_container, newFragment)
             .addToBackStack(null)
             .commit()
-    }*/
+    }
+
+    fun showFirstProfileSettings(){
+        val newFragment = CreateProfileFragment()
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.id_frame_container, newFragment)
+            .commit()
+    }
 }

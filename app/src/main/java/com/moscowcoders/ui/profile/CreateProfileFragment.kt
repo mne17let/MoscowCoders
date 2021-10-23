@@ -44,7 +44,7 @@ class CreateProfileFragment: Fragment(R.layout.fragment_create_profile) {
         bioOrFavSportsTextInputLayout = view.findViewById(R.id.id_textinputlayout_bio_or_fav_sports)
         bioOrFavSportsEditText = view.findViewById(R.id.id_edittext_bio_or_fav_sports)
 
-        val listOfGenders = listOf("Мужчина", "Женщина")
+        val listOfGenders = resources.getStringArray(R.array.genders)
         val genderAdapter =  ArrayAdapter(requireContext(), R.layout.item_edittext_menu_gender, listOfGenders)
 
         genderEditText.setAdapter(genderAdapter)
@@ -55,8 +55,8 @@ class CreateProfileFragment: Fragment(R.layout.fragment_create_profile) {
 
     private fun setViews(){
         setGenderEditText()
-        //setStudyYearEditText()
-        //setFacultyEditText()
+        setStudyYearEditText()
+        setFacultyEditText()
     }
 
     private fun setGenderEditText(){
@@ -74,7 +74,7 @@ class CreateProfileFragment: Fragment(R.layout.fragment_create_profile) {
         val listOfFaculties = listOf("ФИМ", "ФАиВТ", "ФГиГНиГ", "ФРНиГМ", "ФПСиЭСТТ", "ФХТиЭ", "ФКБТЭК", "ФЭиУ", "ФМЭБ", "ЮФ")
         val facultiesAdapter =  ArrayAdapter(requireContext(), R.layout.item_edittext_menu_gender, listOfFaculties)
 
-        studyYearEditText.setAdapter(facultiesAdapter)
+        facultyEditText.setAdapter(facultiesAdapter)
     }
 
 }

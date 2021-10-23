@@ -16,13 +16,9 @@ class SportObjectsListListener : ValueEventListener {
     private var list = mutableListOf<SportObjectModel>()
     val liveData: MutableLiveData<MutableList<SportObjectModel>> = MutableLiveData()
 
-    fun setList(newList: MutableList<SportObjectModel>){
-        list = newList
-    }
-
     override fun onDataChange(snapshot: DataSnapshot) {
 
-        Log.d(TAG_VALUEEVENTLISTENER, "Ответ сразу после приёма: ${snapshot}")
+        //Log.d(TAG_VALUEEVENTLISTENER, "Ответ сразу после приёма: ${snapshot}")
 
         list.clear()
 
@@ -37,10 +33,17 @@ class SportObjectsListListener : ValueEventListener {
                 list.add(newSportObject)
             }
 
-            Log.d(TAG_VALUEEVENTLISTENER, "Ответ: ${oneSnapshot}")
+            //Log.d(TAG_VALUEEVENTLISTENER, "Ответ: ${oneSnapshot}")
 
-            Log.d(TAG_VALUEEVENTLISTENER, "Мой объект: ${newSportObject}")
+            //Log.d(TAG_VALUEEVENTLISTENER, "Мой объект: ${newSportObject}")
         }
+
+        val listOfNames = mutableListOf<String>()
+        for(i in list){
+            i.name?.let { listOfNames.add(it) }
+        }
+
+        Log.d(TAG_VALUEEVENTLISTENER, "Список перед обновлением livedata: ${listOfNames}")
 
         liveData.value = list
     }

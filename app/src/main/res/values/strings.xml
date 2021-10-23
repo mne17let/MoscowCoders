@@ -36,4 +36,9 @@
 
     <string name="item_gender_male">Мужчина</string>
     <string name="item_gender_female">Женщина</string>
+
+    <string-array name="genders">
+        <item>Мужчина</item>
+        <item>Женщина</item>
+    </string-array>
 </resources>

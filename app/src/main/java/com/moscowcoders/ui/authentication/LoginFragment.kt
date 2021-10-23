@@ -13,6 +13,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.moscowcoders.MainActivity
 import com.moscowcoders.R
 
 class LoginFragment: Fragment(R.layout.fragment_login) {
@@ -135,6 +136,16 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
         progressBar.visibility = View.VISIBLE
     }
 
+    private fun showErrorLoad(){
+        signBox.visibility = View.VISIBLE
+
+        if(areLoginViews){
+            forgotPasswordTextView.visibility = View.VISIBLE
+        }
+
+        progressBar.visibility = View.GONE
+    }
+
     private fun setSignInButton(){
         signInButton.setOnClickListener {
             val email = emailEditText.text.toString()
@@ -150,16 +161,17 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
                 return@setOnClickListener
             } else{
                 showLoad()
-                //Toast.makeText(requireContext(), "Всё в порядке. Почта: $email. Пароль: $pass", Toast.LENGTH_SHORT).show()
+
                 authenticationHelper.signIn(email, pass, object : AuthenticationCallback{
                     override fun onSuccess(data: FirebaseUser) {
                         Toast.makeText(requireContext(), "Вход выполнен: $data", Toast.LENGTH_LONG).show()
                         progressBar.visibility = View.GONE
+                        (activity as MainActivity).showSportObjectsListAfterLogIn()
                     }
 
                     override fun onError(error: String) {
                         Toast.makeText(requireContext(), "Ошибка входа: $error", Toast.LENGTH_LONG).show()
-                        progressBar.visibility = View.GONE
+                        showErrorLoad()
                     }
                 })
             }
@@ -182,16 +194,17 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
                 return@setOnClickListener
             } else{
                 showLoad()
-                //Toast.makeText(requireContext(), "Всё в порядке. Почта: $email. Пароль: $pass", Toast.LENGTH_SHORT).show()
+
                 authenticationHelper.createNewUser(email, pass, object : AuthenticationCallback{
                     override fun onSuccess(data: FirebaseUser) {
                         Toast.makeText(requireContext(), "Регистрация выполнена: $data", Toast.LENGTH_LONG).show()
                         progressBar.visibility = View.GONE
+                        (activity as MainActivity).showFirstProfileSettings()
                     }
 
                     override fun onError(error: String) {
                         Toast.makeText(requireContext(), "Ошибка регистрации: $error", Toast.LENGTH_LONG).show()
-                        progressBar.visibility = View.GONE
+                        showErrorLoad()
                     }
                 })
             }
