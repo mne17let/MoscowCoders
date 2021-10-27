@@ -1,6 +1,7 @@
 package com.moscowcoders.data.models.sport_objects
 
 import android.util.Log
+import com.moscowcoders.ui.server_listeners.TimeHelper
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -14,7 +15,7 @@ data class SportObjectModel(
     val days: HashMap<String, HashMap<String, Period>>? = null
 ) {
     // Тег для логов
-    private val TAG_MODEL = "ModelTag"
+    /*private val TAG_MODEL = "ModelTag"
 
     private val timeHelper = TimeHelper()
 
@@ -26,9 +27,9 @@ data class SportObjectModel(
 
     fun mapForList(): Date{
         return timeHelper.getCurrentTime()
-    }
+    }*/
 
-    fun getKeys(){
+    /*fun getKeys(){
         val keys = days?.keys
 
         Log.d(TAG_MODEL, "Ключи: ${keys}")
@@ -46,5 +47,5 @@ data class SportObjectModel(
 
     private fun logNeccessary(any: Any){
         Log.d(TAG_MODEL, "Отсортированная карта: ${any}")
-    }
+    }*/
 }

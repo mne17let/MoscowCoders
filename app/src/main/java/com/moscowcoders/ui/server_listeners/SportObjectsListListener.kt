@@ -41,6 +41,11 @@ class SportObjectsListListener : ValueEventListener {
         val listOfNames = mutableListOf<String>()
         for(i in list){
             i.name?.let { listOfNames.add(it) }
+
+            val timeHelper = i.days?.let { TimeHelper(it) }
+            if (timeHelper != null) {
+                timeHelper.sortMap()
+            }
         }
 
         Log.d(TAG_VALUEEVENTLISTENER, "Список перед обновлением livedata: ${listOfNames}")
