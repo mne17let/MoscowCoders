@@ -3,12 +3,13 @@ package com.moscowcoders.ui.server_listeners
 import android.util.Log
 import com.moscowcoders.data.models.sport_objects.Period
 import com.moscowcoders.data.models.sport_objects.ui_format.UiDay
+import com.moscowcoders.data.models.sport_objects.ui_format.UiPeriod
 import java.text.SimpleDateFormat
 import java.util.*
 
 // Класс для сортировки объектов List, Map и конвертации строк во время и дату и обратно
 
-class TimeHelper(private val hashMap: HashMap<String, HashMap<String, Period>>) {
+class TimeHelper(private val sourceHashMap: HashMap<String, HashMap<String, Period>>) {
 
     private fun getCurrentTime(): Date {
         val date: Date = Calendar.getInstance().time
@@ -34,15 +35,26 @@ class TimeHelper(private val hashMap: HashMap<String, HashMap<String, Period>>) 
         val sortedListOfDays = mutableListOf<UiDay>()
 
         for (longDate in longStringSortedMap.keys) {
-            val newValue = longStringSortedMap[longDate]
-            if (newValue != null) {
-                sortedListOfDays.add(UiDay(longDate, newValue))
+            val newValueStringDate = longStringSortedMap[longDate]
+            val newValueMapOfPeriodsCurrentStringDate = sourceHashMap[newValueStringDate]
+
+            if (newValueStringDate != null && newValueMapOfPeriodsCurrentStringDate != null) {
+                val sortedPeriods = getSortedListOfPeriods(newValueMapOfPeriodsCurrentStringDate)
+
+               // Log.d(TAG_TIME_HELPER, "$sortedPeriods")
+
+                sortedListOfDays.add(UiDay(longDate, newValueStringDate, sortedPeriods))
             }
         }
 
         for(day in sortedListOfDays){
             Log.d(TAG_TIME_HELPER, "День: ${day.date}, дата в мс: ${day.dateLong}")
-            Log.d(TAG_TIME_HELPER, "${day.listOfPeriods}")
+
+            if(day.listOfPeriods != null){
+                for (period in day.listOfPeriods){
+                    Log.d(TAG_TIME_HELPER, "${period}")
+                }
+            }
         }
 
     }
@@ -52,7 +64,7 @@ class TimeHelper(private val hashMap: HashMap<String, HashMap<String, Period>>) 
 
         val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.CANADA)
 
-        for (key in hashMap.keys) {
+        for (key in sourceHashMap.keys) {
             val dateFromString = dateFormat.parse(key)
 
             if (dateFromString != null) {
@@ -61,5 +73,71 @@ class TimeHelper(private val hashMap: HashMap<String, HashMap<String, Period>>) 
         }
 
         return newMap
+    }
+
+    private fun getSortedListOfPeriods(mapOfPeriods: HashMap<String, Period>): List<UiPeriod>{
+        val sortedPeriods = mutableListOf<UiPeriod>()
+
+        //Log.d(TAG_TIME_HELPER, "Получена мапа: $mapOfPeriods")
+
+
+        val sortedMapOfOpensLongToString = sortedMapOf<Long, String>()
+
+        for (stringKey in mapOfPeriods.keys){
+            val currentPeriod = mapOfPeriods[stringKey]
+            val currentOpen = currentPeriod?.open
+
+            val dateFormat = SimpleDateFormat("hh:mm dd-MM-yyyy", Locale.CANADA)
+            val dateFromString = dateFormat.parse(currentOpen)
+
+            if (dateFromString != null) {
+                sortedMapOfOpensLongToString[dateFromString.time] = mapOfPeriods[stringKey]?.open
+            }
+        }
+
+        /*for (longKey in sortedMapOfOpensLongToString.keys){
+            Log.d(TAG_TIME_HELPER, "$sortedPeriods")
+        }*/
+
+        //Log.d(TAG_TIME_HELPER, "Отсортированы по лонгам даты: $sortedMapOfOpensLongToString")
+
+        for (key in sortedMapOfOpensLongToString.keys){
+
+            //Log.d(TAG_TIME_HELPER, "Взят лонг: $key")
+
+            for(stringPeriodKey in mapOfPeriods.keys){
+
+                //Log.d(TAG_TIME_HELPER, "Взято название периода: $stringPeriodKey")
+
+                val currentPeriod = mapOfPeriods[stringPeriodKey]
+
+                //Log.d(TAG_TIME_HELPER, "Взят период: $currentPeriod")
+
+                val currentValueInSortedMap = sortedMapOfOpensLongToString[key]
+                val currentOpen = currentPeriod?.open
+
+                //Log.d(TAG_TIME_HELPER, "По лонгу получено значение открытия: $currentValueInSortedMap")
+                //Log.d(TAG_TIME_HELPER, "Время открытия текущего периода: $currentOpen")
+
+                if(currentPeriod != null && currentPeriod.open != null && currentPeriod.close != null &&
+                    sortedMapOfOpensLongToString[key] == currentPeriod.open){
+
+                    //Log.d(TAG_TIME_HELPER, "Период не ноль полностью")
+
+                    val dateFormat = SimpleDateFormat("hh:mm dd-MM-yyyy", Locale.CANADA)
+                    val dateFromStringOpen = dateFormat.parse(currentPeriod.open)
+                    val dateFromStringClose = dateFormat.parse(currentPeriod.close)
+
+                    if (dateFromStringClose != null && dateFromStringOpen != null){
+                        val longTimeOpen = dateFromStringOpen.time
+                        val longTimeClose = dateFromStringClose.time
+
+                        sortedPeriods.add(UiPeriod(longTimeOpen, longTimeClose, currentPeriod.open, currentPeriod.close, stringPeriodKey))
+                    }
+                }
+            }
+        }
+
+        return sortedPeriods
     }
 }
