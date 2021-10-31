@@ -10,6 +10,7 @@ import com.google.firebase.database.*
 import com.moscowcoders.MainActivity
 import com.moscowcoders.R
 import com.moscowcoders.data.models.sport_objects.SportObjectModel
+import com.moscowcoders.data.models.sport_objects.ui_format.UiSportObject
 import com.moscowcoders.ui.server_listeners.SportObjectsListListener
 
 // Класс фрагмента со списком спортивных объектов
@@ -27,7 +28,7 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
     private lateinit var recycler: RecyclerView
     private lateinit var adapter: ListSportObjectsAdapter
 
-    private val list = mutableListOf<SportObjectModel>()
+    private val list = mutableListOf<UiSportObject>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,7 +36,7 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
 
         val listOfNames = mutableListOf<String>()
         for(i in list){
-            i.name?.let { listOfNames.add(it) }
+            i.name.let { listOfNames.add(it) }
         }
 
         Log.d(TAG_FRAGMENT, "Список в onViewCreated: ${listOfNames}")
@@ -66,7 +67,7 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
 
             val listOfNames = mutableListOf<String>()
             for(i in list){
-                i.name?.let { listOfNames.add(it) }
+                i.name.let { listOfNames.add(it) }
             }
 
             Log.d(TAG_FRAGMENT, "Старый список после обновления лайвдаты: ${listOfNames}")
@@ -77,7 +78,7 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
 
             val listOfNewNames = mutableListOf<String>()
             for(i in list){
-                i.name?.let { listOfNewNames.add(it) }
+                i.name.let { listOfNewNames.add(it) }
             }
 
             //Log.d(TAG_FRAGMENT, "Новый список после обновления лайвдаты: ${list}")

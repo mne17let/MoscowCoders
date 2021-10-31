@@ -30,4 +30,7 @@
     <color name="status_closed_item_list_sport_objects_title">#FF0000</color>
 
     <color name="button_make_request_item_list_sport_objects_title">#FF9800</color>
+
+    <color name="sport_object_available">#4CAF50</color>
+    <color name="sport_object_unavailable">#FD2A2A</color>
 </resources>

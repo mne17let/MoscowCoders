@@ -11,17 +11,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.moscowcoders.R
 import com.moscowcoders.data.models.sport_objects.SportObjectModel
+import com.moscowcoders.data.models.sport_objects.ui_format.UiSportObject
+import com.moscowcoders.ui.server_listeners.TimeHelper
 
 // Класс адаптера для списка спортивных объектов
 
-class ListSportObjectsAdapter(private val clickListener: OnClickListener): RecyclerView.Adapter<ListSportObjectsAdapter.SportObjectViewHolder>() {
+class ListSportObjectsAdapter(private val clickListener: OnClickListener, ): RecyclerView.Adapter<ListSportObjectsAdapter.SportObjectViewHolder>() {
 
     // Тег для логов
     private val TAG_ADAPTER = "SportObjectsListAdapter"
 
-    private var list = emptyList<SportObjectModel>()
+    private var list = emptyList<UiSportObject>()
 
-    fun setList(newList: List<SportObjectModel>){
+    fun setList(newList: List<UiSportObject>){
         list = newList
         notifyDataSetChanged()
     }
@@ -47,13 +49,34 @@ class ListSportObjectsAdapter(private val clickListener: OnClickListener): Recyc
         private val imageView: ImageView = itemView.findViewById(R.id.id_photo_item_sport_object)
         private val makeRequestButton: Button = itemView.findViewById(R.id.id_button_make_request_item_sport_object)
 
-        fun bind(data: SportObjectModel){
-            status.text = data.isOpen.toString()
+        fun bind(data: UiSportObject){
             title.text = data.name
             Glide.with(imageView).load(data.image_url).into(imageView)
 
+            val currentTime = TimeHelper().getCurrentTime()
+
+            var isOpen = false
+
+            for (day in data.days){
+                if(day.dateLong < currentTime){
+                    for (period in day.listOfPeriods){
+                        if (currentTime > period.longTimeOpen && currentTime < period.longTimeClose){
+                            status.text = "Доступно"
+
+                            isOpen = true
+                            status.setBackgroundColor(itemView.context.resources.getColor(R.color.sport_object_available, null))
+                        }
+                    }
+                }
+            }
+
+            if (!isOpen){
+                status.text = "Недоступно"
+                status.setBackgroundColor(itemView.context.resources.getColor(R.color.sport_object_unavailable, null))
+            }
+
             makeRequestButton.setOnClickListener {
-                data.id?.let { id_not_null -> clickListener.onClick(id_not_null)
+                data.id.let { id_not_null -> clickListener.onClick(id_not_null)
                     Log.d("SportObjectsListAdapter", "В адаптере передано: $id_not_null")
                 }
             }

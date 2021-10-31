@@ -6,6 +6,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.moscowcoders.data.models.sport_objects.SportObjectModel
+import com.moscowcoders.data.models.sport_objects.ui_format.UiSportObject
 
 // Слушатель изменений в списке спортивных объектов в базе данных
 
@@ -13,8 +14,8 @@ class SportObjectsListListener : ValueEventListener {
 
     // Тег для логов
     private val TAG_VALUEEVENTLISTENER = "MySportObjectsListListener"
-    private var list = mutableListOf<SportObjectModel>()
-    val liveData: MutableLiveData<MutableList<SportObjectModel>> = MutableLiveData()
+    private var list = mutableListOf<UiSportObject>()
+    val liveData: MutableLiveData<MutableList<UiSportObject>> = MutableLiveData()
 
     override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -22,15 +23,14 @@ class SportObjectsListListener : ValueEventListener {
 
         list.clear()
 
+        val helpList = mutableListOf<SportObjectModel>()
+
         for (oneSnapshot: DataSnapshot in snapshot.children) {
             val newSportObject: SportObjectModel? =
                 oneSnapshot.getValue(SportObjectModel::class.java)
 
-            val isOpen = oneSnapshot.child("isOpen").value
-
             if (newSportObject != null) {
-                newSportObject.isOpen = isOpen as Boolean
-                list.add(newSportObject)
+                helpList.add(newSportObject)
             }
 
             //Log.d(TAG_VALUEEVENTLISTENER, "Ответ: ${oneSnapshot}")
@@ -39,12 +39,15 @@ class SportObjectsListListener : ValueEventListener {
         }
 
         val listOfNames = mutableListOf<String>()
-        for(i in list){
+        for(i in helpList){
             i.name?.let { listOfNames.add(it) }
+        }
 
-            val timeHelper = i.days?.let { TimeHelper(it) }
-            if (timeHelper != null) {
-                timeHelper.sortMap()
+        for(crudeSportObject in helpList){
+            val pureQualityObject = crudeSportObject.mapForUi()
+
+            if (pureQualityObject != null){
+                list.add(pureQualityObject)
             }
         }
 
