@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Иван Иванов"
+            android:text="Привет, Иван"
             android:textSize="30sp"
             android:layout_margin="4dp"
             android:layout_weight="1"

@@ -141,6 +141,20 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <Button
+            android:id="@+id/id_button_send_first_profile_data"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="@color/main_pink"
+            android:text="@string/send_first_profile_data"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="visible"
+            android:enabled="true" />
+
     </LinearLayout>
 
 </ScrollView>

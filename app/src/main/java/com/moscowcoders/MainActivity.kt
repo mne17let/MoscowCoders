@@ -3,11 +3,11 @@ package com.moscowcoders
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.moscowcoders.ui.authentication.AuthenticationHelper
+import com.moscowcoders.ui.authentication.FirebaseAuthenticationHelper
 import com.moscowcoders.ui.authentication.LoginFragment
 import com.moscowcoders.ui.checkin.FragmentCheckIn
 import com.moscowcoders.ui.list.FragmentListSportObjects
-import com.moscowcoders.ui.profile.CreateProfileFragment
+import com.moscowcoders.ui.profile.firstCreateProfile.CreateProfileFragment
 
 // Класс единственного Activity в приложении
 
@@ -20,12 +20,12 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        showSportObjectsList()
+        showStartFragment()
     }
 
     fun showCheckInOrLoginFragment(id: String){
 
-        val authenticationHelper = AuthenticationHelper()
+        val authenticationHelper = FirebaseAuthenticationHelper()
         val currentUser = authenticationHelper.getCurrentUser()
 
         if(currentUser == null){
@@ -38,6 +38,10 @@ class MainActivity: AppCompatActivity() {
 
     fun showSportObjectsListAfterLogIn(){
         showSportObjectsList()
+    }
+
+    private fun showStartFragment(){
+        showFirstProfileSettings()
     }
 
     private fun showSportObjectsList(){

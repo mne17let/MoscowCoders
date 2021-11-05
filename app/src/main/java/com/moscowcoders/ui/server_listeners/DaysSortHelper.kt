@@ -90,7 +90,11 @@ class DaysSortHelper(private val sourceHashMap: HashMap<String, HashMap<String, 
             val currentOpen = currentPeriod?.open
 
             val dateFormat = SimpleDateFormat("hh:mm dd-MM-yyyy", Locale.CANADA)
-            val dateFromString = dateFormat.parse(currentOpen)
+
+            var dateFromString: Date? = null
+            if (currentOpen != null) {
+                dateFromString = dateFormat.parse(currentOpen)
+            }
 
             if (dateFromString != null) {
                 sortedMapOfOpensLongToString[dateFromString.time] = mapOfPeriods[stringKey]?.open

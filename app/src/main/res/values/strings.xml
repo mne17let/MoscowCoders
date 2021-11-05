@@ -34,8 +34,12 @@
     <string name="hint_input_faculty">Укажите ваш факультет</string>
     <string name="hint_input_bio_or_favourite_sports">Укажите ваши любимые виды спорта</string>
 
+    <string name="send_first_profile_data">Отправить</string>
+
     <string name="item_gender_male">Мужчина</string>
     <string name="item_gender_female">Женщина</string>
+
+    <string name="empty_profile_setting_text">Заполните поле</string>
 
     <string-array name="genders">
         <item>Мужчина</item>

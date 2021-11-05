@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.moscowcoders.MainActivity
 import com.moscowcoders.R
@@ -20,7 +19,7 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
 
     private var areLoginViews = true
 
-    private val authenticationHelper = AuthenticationHelper()
+    private val authenticationHelper = FirebaseAuthenticationHelper()
 
     private lateinit var signInTextView: TextView
     private lateinit var signUpTextView: TextView
@@ -212,6 +211,7 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
     }
 
     private fun setEditTexts(){
+
         emailEditText.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }

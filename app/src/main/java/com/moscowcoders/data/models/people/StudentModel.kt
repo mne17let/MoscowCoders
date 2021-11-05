@@ -1,12 +1,12 @@
 package com.moscowcoders.data.models.people
 
 data class StudentModel(
-    private val email: String? = null,
-    private val fName: String? = null,
-    private val lName: String? = null,
-    private val gender: String? = null,
-    private val studyGroup: String? = null,
-    private val studyYear: String? = null,
-    private val faculty: String? = null,
-    private val bioOrFavouriteSports: String? = null
+    val email: String? = null,
+    val fName: String? = null,
+    val lName: String? = null,
+    val gender: String? = null,
+    val studyGroup: String? = null,
+    val studyYear: String? = null,
+    val faculty: String? = null,
+    val bioOrFavouriteSports: String? = null
 )

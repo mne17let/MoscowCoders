@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseUser
 import java.lang.Exception
 import javax.security.auth.callback.Callback
 
-class AuthenticationHelper {
+class FirebaseAuthenticationHelper {
 
     private var callback: LoginFragment.AuthenticationCallback? = null
 

@@ -1,4 +1,4 @@
-package com.moscowcoders.ui.profile
+package com.moscowcoders.ui.profile.changeProfileSettings
 
 import androidx.fragment.app.Fragment
 import com.moscowcoders.R
