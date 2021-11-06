@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.FirebaseDatabase
+import com.moscowcoders.MainActivity
 import com.moscowcoders.R
 import com.moscowcoders.data.models.people.StudentModel
 import com.moscowcoders.ui.authentication.FirebaseAuthenticationHelper
@@ -214,7 +215,7 @@ class CreateProfileFragment: Fragment(R.layout.fragment_create_profile) {
                 firebaseHelper.sendNewProfileSettings(newStudentModel, object : SendProfileSettingsCallback{
                     override fun onSuccess(data: String) {
                         Toast.makeText(requireContext(), "$data", Toast.LENGTH_SHORT).show()
-
+                        (activity as MainActivity).showSportObjectsListAfterLogIn()
                     }
 
                     override fun onError(error: String) {
