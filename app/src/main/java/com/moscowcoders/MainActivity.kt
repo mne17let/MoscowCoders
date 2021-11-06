@@ -41,7 +41,7 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun showStartFragment(){
-        showFirstProfileSettings()
+        showSportObjectsList()
     }
 
     private fun showSportObjectsList(){
