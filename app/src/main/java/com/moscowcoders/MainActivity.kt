@@ -24,15 +24,12 @@ class MainActivity: AppCompatActivity() {
         showStartFragment()
     }
 
-    fun showCheckInOrLoginFragment(id: String){
+    fun showCheckInOrLoginFragment(sportObjectId: String, haveProfile: Boolean, haveAccount: Boolean){
 
-        val authenticationHelper = FirebaseAuthenticationHelper()
-        val currentUser = authenticationHelper.getCurrentUser()
-
-        if(currentUser == null){
+        if(!haveAccount){
             showLoginFragment()
         } else{
-            showCheckInFragment(id)
+            showCheckInFragment(sportObjectId)
         }
 
     }

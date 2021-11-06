@@ -5,39 +5,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ProgressBar
+        android:id="@+id/id_progress_bar_list_sport_objects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
     <LinearLayout
+        android:id="@+id/id_main_content_fragment_list_sport_objects"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/design_default_color_primary">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
 
-        <TextView
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Привет, Иван"
-            android:textSize="30sp"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:layout_gravity="center"/>
+            android:orientation="horizontal"
+            android:background="@color/design_default_color_primary">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_settings"
-            android:background="@null"
-            app:tint="@color/white"
-            android:layout_margin="4dp"/>
+            <TextView
+                android:id="@+id/id_textview_hello_name"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Привет"
+                android:textSize="30sp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+
+            <ImageButton
+                android:id="@+id/id_button_open_settings"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_settings"
+                android:background="@null"
+                app:tint="@color/white"
+                android:layout_margin="4dp"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_recyclerview_list_sport_objects"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/id_recyclerview_list_sport_objects"
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
 
 </LinearLayout>

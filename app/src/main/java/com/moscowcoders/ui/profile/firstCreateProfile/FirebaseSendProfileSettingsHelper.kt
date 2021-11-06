@@ -1,5 +1,6 @@
 package com.moscowcoders.ui.profile.firstCreateProfile
 
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -7,6 +8,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.moscowcoders.data.models.people.StudentModel
 
 class FirebaseSendProfileSettingsHelper {
+
+    private val TAG_CREATE_PROFILE_LISTENER = "MyFirebaseSendProfileSettingsHelper"
 
     private val firebaseAuth = FirebaseAuth.getInstance()
     private var currentUser: FirebaseUser? = firebaseAuth.currentUser
@@ -27,6 +30,8 @@ class FirebaseSendProfileSettingsHelper {
         val checkUser = currentUser
         if (checkUser != null){
             peopleDataBase.child(checkUser.uid).setValue(studentModel)
+            Log.d(TAG_CREATE_PROFILE_LISTENER, "Отправлен объект: $studentModel")
+
             callBack?.onSuccess("Успешно сохранено")
         } else {
             callBack?.onError("Текущий пользователь неизвестен")

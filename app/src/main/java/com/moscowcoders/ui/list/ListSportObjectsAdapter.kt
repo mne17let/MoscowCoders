@@ -84,6 +84,6 @@ class ListSportObjectsAdapter(private val clickListener: OnClickListener, ): Rec
     }
 
     interface OnClickListener{
-        fun onClick(id: String)
+        fun onClick(sportObjectId: String)
     }
 }
