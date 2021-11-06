@@ -3,6 +3,7 @@ package com.moscowcoders
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import com.moscowcoders.ui.authentication.FirebaseAuthenticationHelper
 import com.moscowcoders.ui.authentication.LoginFragment
 import com.moscowcoders.ui.checkin.FragmentCheckIn
@@ -79,6 +80,8 @@ class MainActivity: AppCompatActivity() {
 
     fun showFirstProfileSettings(){
         val newFragment = CreateProfileFragment()
+
+        supportFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
         supportFragmentManager
             .beginTransaction()
