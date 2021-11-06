@@ -1,15 +1,31 @@
 package com.moscowcoders.ui.profile
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.moscowcoders.R
+import com.moscowcoders.data.models.people.StudentModel
+import com.moscowcoders.data.room.StudentApplication
+import com.moscowcoders.data.room.StudentViewModel
+import com.moscowcoders.data.room.StudentViewModelFactory
 
 class CreateProfileFragment: Fragment(R.layout.fragment_create_profile) {
+
+    private val viewModel: StudentViewModel by activityViewModels{
+        StudentViewModelFactory(
+            (activity?.application as StudentApplication).database
+                .studentDao()
+        )
+
+    }
+    lateinit var student:StudentModel
 
     private lateinit var nameTextInputLayout: TextInputLayout
     private lateinit var nameEditText: TextInputEditText
@@ -26,6 +42,32 @@ class CreateProfileFragment: Fragment(R.layout.fragment_create_profile) {
     private lateinit var bioOrFavSportsTextInputLayout: TextInputLayout
     private lateinit var bioOrFavSportsEditText: TextInputEditText
 
+    private fun isStudentValid(): Boolean{
+        return viewModel.isStudentValid(
+
+           nameEditText.text.toString(),
+            lastNameEditText.text.toString(),
+            genderEditText.text.toString(),
+            studyGroupEditText.text.toString(),
+            studyYearEditText.text.toString(),
+            facultyEditText.text.toString(),
+            bioOrFavSportsEditText.text.toString())
+
+    }
+    private fun addNewStudent() {
+        if (isStudentValid()) {
+            viewModel.addNewItem(
+            nameEditText.text.toString(),
+            lastNameEditText.text.toString(),
+            genderEditText.text.toString(),
+            studyGroupEditText.text.toString(),
+            studyYearEditText.text.toString(),
+            facultyEditText.text.toString(),
+            bioOrFavSportsEditText.text.toString())
+
+        }
+
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -48,7 +90,7 @@ class CreateProfileFragment: Fragment(R.layout.fragment_create_profile) {
         val genderAdapter =  ArrayAdapter(requireContext(), R.layout.item_edittext_menu_gender, listOfGenders)
 
         genderEditText.setAdapter(genderAdapter)
-
+        addNewStudent()
         setViews()
 
     }
