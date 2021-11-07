@@ -36,6 +36,8 @@
 
     <string name="send_first_profile_data">Отправить</string>
 
+    <string name="button_open_settings">Настройки</string>
+
     <string name="item_gender_male">Мужчина</string>
     <string name="item_gender_female">Женщина</string>
 

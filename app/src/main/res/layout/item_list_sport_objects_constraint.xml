@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/item_list_sport_objects_background"
+    android:background="@color/main_white"
 
     android:layout_marginBottom="8dp">
 
@@ -18,7 +18,7 @@
         android:gravity="center"
         android:paddingVertical="8dp"
         android:text="Спортивный зал"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -48,11 +48,14 @@
         android:gravity="center"
         android:padding="8dp"
         android:text="Открыто"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        app:layout_constraintTop_toBottomOf="@id/id_title_item_list_sport_objects"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/id_button_make_request_item_sport_object"
+        app:layout_constraintLeft_toRightOf="@id/id_photo_item_sport_object"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/id_photo_item_sport_object"/>
+        app:layout_constraintTop_toBottomOf="@id/id_title_item_list_sport_objects"
+        app:layout_constraintVertical_bias="1"/>
 
     <Button
         android:id="@+id/id_button_make_request_item_sport_object"
@@ -62,12 +65,15 @@
 
         android:layout_gravity="center"
         android:layout_margin="4dp"
-        android:backgroundTint="@color/button_make_request_item_list_sport_objects_title"
+        android:backgroundTint="@color/main_pink"
+        android:textColor="@color/black"
         android:text="@string/make_request"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="@id/id_status_item_sport_object"
-        app:layout_constraintLeft_toLeftOf="@id/id_status_item_sport_object"/>
+        app:layout_constraintLeft_toLeftOf="@id/id_status_item_sport_object"
+        app:layout_constraintTop_toBottomOf="@+id/id_status_item_sport_object"
+        app:layout_constraintVertical_bias="0"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
