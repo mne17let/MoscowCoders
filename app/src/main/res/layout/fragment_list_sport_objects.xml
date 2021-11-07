@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/main_white">
+            android:background="@color/main_brown">
 
             <TextView
                 android:id="@+id/id_textview_hello_name"
@@ -34,7 +34,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Привет"
-                android:textSize="24sp"
+                android:textSize="16sp"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:textColor="@color/black"
@@ -47,11 +47,13 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/main_pink"
                 android:textColor="@color/black"
+                android:textSize="16sp"
                 android:layout_marginHorizontal="4dp"
                 android:text="@string/button_open_settings"
                 android:drawableLeft="@drawable/ic_settings"
                 android:drawableTint="@color/black"
-                android:padding="4dp" />
+                android:padding="4dp"
+                android:textAllCaps="false"/>
 
         </LinearLayout>
 

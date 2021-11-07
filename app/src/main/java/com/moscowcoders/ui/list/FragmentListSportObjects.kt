@@ -71,6 +71,7 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
         setRecyclerView()
         setDataSportObjectsChanged()
         setHelloTextView()
+        setSettingsButton()
     }
 
     private fun setRecyclerView(){
@@ -81,6 +82,12 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
 
     private fun setNewListForAdapter(){
         adapter.setList(list)
+    }
+
+    private fun setSettingsButton(){
+        buttonProfileSettings.setOnClickListener {
+            Toast.makeText(requireContext(), "Когда-нибудь вам будут доступны настройки", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setHelloTextView(){

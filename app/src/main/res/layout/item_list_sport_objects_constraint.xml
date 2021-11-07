@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/main_white"
-
-    android:layout_marginBottom="8dp">
+    android:background="@color/main_white">
 
     <TextView
         android:id="@+id/id_title_item_list_sport_objects"
@@ -29,11 +27,12 @@
         android:id="@+id/id_photo_item_sport_object"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_margin="8dp"
         android:scaleType="centerCrop"
         android:src="@drawable/sportzal_example"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/id_title_item_list_sport_objects"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        android:layout_margin="8dp"/>
 
     <TextView
         android:id="@+id/id_status_item_sport_object"
