@@ -46,7 +46,7 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
 
     // ActionBar
     private lateinit var helloTextView: TextView
-    private lateinit var buttonProfileSettings: ImageButton
+    private lateinit var buttonProfileSettings: Button
 
     private val list = mutableListOf<UiSportObject>()
 
