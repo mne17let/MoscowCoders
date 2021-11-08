@@ -61,7 +61,7 @@ class ListSportObjectsAdapter(private val clickListener: OnClickListener, ): Rec
                 if(day.dateLong < currentTime){
                     for (period in day.listOfPeriods){
                         if (currentTime > period.longTimeOpen && currentTime < period.longTimeClose){
-                            status.text = "Доступно"
+                            status.text = itemView.context.getString(R.string.object_is_available)
 
                             isOpen = true
                             status.setBackgroundColor(itemView.context.resources.getColor(R.color.sport_object_available, null))
@@ -71,7 +71,7 @@ class ListSportObjectsAdapter(private val clickListener: OnClickListener, ): Rec
             }
 
             if (!isOpen){
-                status.text = "Недоступно"
+                status.text = itemView.context.getString(R.string.object_is_not_available)
                 status.setBackgroundColor(itemView.context.resources.getColor(R.color.sport_object_unavailable, null))
             }
 
