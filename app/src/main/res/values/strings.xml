@@ -43,6 +43,8 @@
 
     <string name="empty_profile_setting_text">Заполните поле</string>
 
+    <string name="send_check_in">Отправить заявку</string>
+
     <string-array name="genders">
         <item>Мужчина</item>
         <item>Женщина</item>
