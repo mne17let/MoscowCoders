@@ -1,52 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
-
+    <TextView
+        android:id="@+id/id_textview_check_in_into"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:text="Запись в"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:padding="8dp"/>
 
-        <TextView
-            android:id="@+id/id_check_in_id"
+    <Button
+        android:id="@+id/id_popup_with_dates_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Дата"
+        android:layout_margin="8dp"
+        />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_periods_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="id"
-            android:textSize="20dp"
-            android:gravity="center"/>
+            android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/id_check_in_name"
+    </ScrollView>
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Название"
-            android:textSize="20dp"
-            android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/id_check_in_days"
+    <Button
+        android:id="@+id/id_send_check_in_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/send_check_in"
+        android:layout_weight="0"/>
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="День 1"
-            android:textSize="20dp"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="День 2"
-            android:textSize="20dp"
-            android:gravity="center"/>
-
-    </LinearLayout>
-
-    <include layout="@layout/bottom_sheet_layout_with_dates" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

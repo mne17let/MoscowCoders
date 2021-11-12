@@ -3,14 +3,17 @@ package com.moscowcoders.ui.checkin
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.TextView
+import android.widget.Button
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.database.*
 import com.moscowcoders.R
 import com.moscowcoders.data.models.sport_objects.SportObjectModel
+import com.moscowcoders.data.models.sport_objects.ui_format.UiDay
+import com.moscowcoders.data.models.sport_objects.ui_format.UiPeriod
 import com.moscowcoders.ui.server_listeners.DaysSortHelper
 
 // Класс фрагмента выбора времени и отправки заявки на посещение спортивного объекта
@@ -27,11 +30,17 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
 
     private var currentObjectData: SportObjectModel? = null
 
-    private lateinit var id_textview: TextView
-    private lateinit var name_textview: TextView
-    private lateinit var days_textview: TextView
-    private lateinit var bottom_sheet_behavior: BottomSheetBehavior<RecyclerView>
-    private lateinit var recyclerview_bottom_sheet: RecyclerView
+    // Ui
+    private lateinit var button_dates_popup_menu: Button
+    private lateinit var check_in_button: Button
+
+    // RecyclerView
+    private lateinit var recyclerview_with_periods: RecyclerView
+    private lateinit var periodsAdapter: PeriodsCheckInAdapter
+
+    // PopUp menu
+    private lateinit var popupMenu: PopupMenu
+    private var sortListOfDays: List<UiDay> = emptyList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,21 +55,41 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        id_textview = view.findViewById(R.id.id_check_in_id)
-        name_textview = view.findViewById(R.id.id_check_in_name)
-        days_textview = view.findViewById(R.id.id_check_in_days)
-        recyclerview_bottom_sheet = view.findViewById(R.id.id_bottom_sheet_recyclerview)
-        bottom_sheet_behavior = BottomSheetBehavior.from(recyclerview_bottom_sheet)
-        // bottom_sheet_behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
-        recyclerview_bottom_sheet.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview_bottom_sheet.adapter = DaysDateAdapter()
+        recyclerview_with_periods = view.findViewById(R.id.id_periods_recyclerview)
+        button_dates_popup_menu = view.findViewById(R.id.id_popup_with_dates_button)
+        check_in_button = view.findViewById(R.id.id_send_check_in_button)
 
+        setDaysRecyclerView()
         setDataSportObjectsChanged()
+        setPopUpMenu()
+        setPopUpDatesButton()
+    }
+
+    private fun setDaysRecyclerView(){
+        periodsAdapter = PeriodsCheckInAdapter()
+        recyclerview_with_periods.layoutManager = LinearLayoutManager(requireContext())
+        recyclerview_with_periods.adapter = periodsAdapter
     }
 
     private fun setDataSportObjectsChanged(){
         myObjectRef?.addValueEventListener(MyValueEventListener())
+    }
+
+    private fun setPopUpMenu(){
+        popupMenu = PopupMenu(requireContext(), button_dates_popup_menu)
+        popupMenu.setOnMenuItemClickListener {
+            Toast.makeText(requireContext(), "Нажат итем: ${it.title}, id: ${it.itemId}", Toast.LENGTH_SHORT).show()
+            button_dates_popup_menu.text = it.title
+            setNewPeriods(it.title.toString())
+            false
+        }
+    }
+
+    private fun setPopUpDatesButton(){
+        button_dates_popup_menu.setOnClickListener {
+            popupMenu.show()
+        }
     }
 
     private inner class MyValueEventListener: ValueEventListener {
@@ -68,7 +97,7 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
         override fun onDataChange(snapshot: DataSnapshot) {
             currentObjectData = snapshot.getValue(SportObjectModel::class.java)
             Log.d(TAG_FRAGMENT, "Ответ: ${currentObjectData}")
-            setNewData()
+            sortData()
         }
 
         override fun onCancelled(error: DatabaseError) {
@@ -76,19 +105,38 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
         }
     }
 
-    private fun setNewData(){
-        id_textview.text = currentObjectData?.id
+    private fun sortData(){
+        val currentData = currentObjectData
+        val currentDays = currentData?.days
 
-        val helper = currentObjectData?.days?.let { DaysSortHelper(it) }
-        val list = helper?.sortDaysAndPeriods()
+        if (currentDays != null){
+            val helper = DaysSortHelper(currentDays)
+            val listOfSortedDays = helper.sortDaysAndPeriods()
 
-        var textForNameTextview = currentObjectData?.name
+            setNewData(listOfSortedDays)
+            sortListOfDays = listOfSortedDays
+        }
+    }
 
-        if (list != null) {
-            for(day in list){
-                textForNameTextview += day.toString()
+    private fun setNewData(listOfDays: List<UiDay>){
+        popupMenu.menu.clear()
+
+        for (i in 0..listOfDays.size - 1){
+            popupMenu.menu.add(0, i, i, listOfDays[i].date)
+        }
+    }
+
+    private fun setNewPeriods(stringDate: String){
+
+        val currentSortedDays = sortListOfDays
+
+        var currentPeriods: List<UiPeriod> = emptyList()
+        for (day in currentSortedDays){
+            if (day.date == stringDate){
+                currentPeriods = day.listOfPeriods
             }
         }
-        name_textview.text = textForNameTextview
+
+        periodsAdapter.setList(currentPeriods)
     }
 }
