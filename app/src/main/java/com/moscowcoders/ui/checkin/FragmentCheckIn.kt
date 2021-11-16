@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.PopupMenu
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +19,7 @@ import com.moscowcoders.ui.server_listeners.DaysSortHelper
 
 // Класс фрагмента выбора времени и отправки заявки на посещение спортивного объекта
 
-class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
+class FragmentCheckIn: Fragment(R.layout.fragment_check_in), PeriodsCheckInAdapter.OnPeriodClickListener {
 
     // Тег для логов
     private val TAG_FRAGMENT = "FragmentCheckIn"
@@ -33,6 +34,8 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
     // Ui
     private lateinit var button_dates_popup_menu: Button
     private lateinit var check_in_button: Button
+    private lateinit var textview_current_choice: TextView
+    private lateinit var textview_sport_object_title: TextView
 
     // RecyclerView
     private lateinit var recyclerview_with_periods: RecyclerView
@@ -59,6 +62,8 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
         recyclerview_with_periods = view.findViewById(R.id.id_periods_recyclerview)
         button_dates_popup_menu = view.findViewById(R.id.id_popup_with_dates_button)
         check_in_button = view.findViewById(R.id.id_send_check_in_button)
+        textview_current_choice = view.findViewById(R.id.id_textview_current_choice)
+        textview_sport_object_title = view.findViewById(R.id.id_textview_check_in_into)
 
         setDaysRecyclerView()
         setDataSportObjectsChanged()
@@ -67,7 +72,7 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
     }
 
     private fun setDaysRecyclerView(){
-        periodsAdapter = PeriodsCheckInAdapter()
+        periodsAdapter = PeriodsCheckInAdapter(this)
         recyclerview_with_periods.layoutManager = LinearLayoutManager(requireContext())
         recyclerview_with_periods.adapter = periodsAdapter
     }
@@ -113,17 +118,24 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
             val helper = DaysSortHelper(currentDays)
             val listOfSortedDays = helper.sortDaysAndPeriods()
 
-            setNewData(listOfSortedDays)
+            setNewPeriods(listOfSortedDays)
             sortListOfDays = listOfSortedDays
+
+            currentData.name?.let { setNewTitle(it) }
         }
     }
 
-    private fun setNewData(listOfDays: List<UiDay>){
+    private fun setNewPeriods(listOfDays: List<UiDay>){
         popupMenu.menu.clear()
 
         for (i in 0..listOfDays.size - 1){
             popupMenu.menu.add(0, i, i, listOfDays[i].date)
         }
+    }
+
+    private fun setNewTitle(name: String){
+        val newTitle = "Запись в $name"
+        textview_sport_object_title.text = newTitle
     }
 
     private fun setNewPeriods(stringDate: String){
@@ -138,5 +150,12 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in) {
         }
 
         periodsAdapter.setList(currentPeriods)
+    }
+
+    override fun onClick(data: UiPeriod) {
+        val newText = "Вы выбрали: ${data.open}"
+        textview_current_choice.text = newText
+        textview_sport_object_title.setBackgroundColor(textview_current_choice.context.resources.getColor(R.color.white, null))
+        textview_sport_object_title.setBackgroundColor(textview_current_choice.context.resources.getColor(R.color.black, null))
     }
 }
