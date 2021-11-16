@@ -44,6 +44,7 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in), PeriodsCheckInAdapt
     // PopUp menu
     private lateinit var popupMenu: PopupMenu
     private var sortListOfDays: List<UiDay> = emptyList()
+    private var clickedDateId: Int? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,10 +84,12 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in), PeriodsCheckInAdapt
 
     private fun setPopUpMenu(){
         popupMenu = PopupMenu(requireContext(), button_dates_popup_menu)
-        popupMenu.setOnMenuItemClickListener {
-            Toast.makeText(requireContext(), "Нажат итем: ${it.title}, id: ${it.itemId}", Toast.LENGTH_SHORT).show()
-            button_dates_popup_menu.text = it.title
-            setNewPeriods(it.title.toString())
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            Toast.makeText(requireContext(), "Нажат итем: ${menuItem.title}, id: ${menuItem.itemId}", Toast.LENGTH_SHORT).show()
+            button_dates_popup_menu.text = menuItem.title
+            setNewPeriods(menuItem.title.toString())
+            resetClickedDate(menuItem.itemId)
+            clickedDateId = menuItem.itemId
             false
         }
     }
@@ -125,6 +128,12 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in), PeriodsCheckInAdapt
         }
     }
 
+    private fun resetClickedDate(id: Int){
+        if (clickedDateId != id){
+            periodsAdapter.resetClickedItems()
+        }
+    }
+
     private fun setNewPeriods(listOfDays: List<UiDay>){
         popupMenu.menu.clear()
 
@@ -155,7 +164,9 @@ class FragmentCheckIn: Fragment(R.layout.fragment_check_in), PeriodsCheckInAdapt
     override fun onClick(data: UiPeriod) {
         val newText = "Вы выбрали: ${data.open}"
         textview_current_choice.text = newText
-        textview_sport_object_title.setBackgroundColor(textview_current_choice.context.resources.getColor(R.color.white, null))
-        textview_sport_object_title.setBackgroundColor(textview_current_choice.context.resources.getColor(R.color.black, null))
+
+        if (textview_current_choice.visibility == View.GONE){
+            textview_current_choice.visibility = View.VISIBLE
+        }
     }
 }
