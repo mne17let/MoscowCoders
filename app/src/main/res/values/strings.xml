@@ -45,6 +45,10 @@
 
     <string name="send_check_in">Отправить заявку</string>
 
+    <string name="choose_date">Выберите дату</string>
+
+    <string name="choice_for_check_in">Вы выбрали</string>
+
     <string-array name="genders">
         <item>Мужчина</item>
         <item>Женщина</item>

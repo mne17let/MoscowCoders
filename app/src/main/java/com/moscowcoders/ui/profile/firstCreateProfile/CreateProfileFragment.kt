@@ -12,7 +12,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.moscowcoders.MainActivity
 import com.moscowcoders.R
 import com.moscowcoders.data.models.people.StudentModel
+import com.moscowcoders.data.models.sport_objects.ui_format.UiPeriod
 import com.moscowcoders.ui.authentication.FirebaseAuthenticationHelper
+import com.moscowcoders.ui.checkin.PeriodsCheckInAdapter
 
 class CreateProfileFragment: Fragment(R.layout.fragment_create_profile) {
 
@@ -314,5 +316,4 @@ class CreateProfileFragment: Fragment(R.layout.fragment_create_profile) {
         val faculty: String,
         val bioOrFavouriteSports: String? = null
     )
-
 }
