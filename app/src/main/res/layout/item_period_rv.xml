@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:background="@color/white"
-        android:textColor="@color/black"
+        android:background="@color/my_gray"
+        android:textColor="@color/white"
         android:text="@string/send_check_in"
         android:gravity="center" />
 
