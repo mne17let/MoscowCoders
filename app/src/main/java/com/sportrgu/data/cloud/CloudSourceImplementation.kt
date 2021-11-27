@@ -26,7 +26,7 @@ class CloudSourceImplementation : CloudSource {
         val timeStart = newBooking.timeStartString
         val userId = newBooking.userId
         if (timeStart != null && userId != null) {
-            val call = api.sendBookingsList(
+            val call = api.sendNewBooking(
                 newBooking.userId,
                 newBooking.timeStartString,
                 newBooking

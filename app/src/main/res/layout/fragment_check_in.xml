@@ -15,14 +15,15 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="20dp"
-        android:padding="8dp"/>
+        android:padding="8dp" />
 
     <Button
         android:id="@+id/id_popup_with_dates_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/choose_date"
-        android:layout_margin="8dp"
+        android:background="@drawable/custom_background_with_ripple"
+
         />
 
     <ScrollView

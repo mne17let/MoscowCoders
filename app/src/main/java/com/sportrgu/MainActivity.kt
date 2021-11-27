@@ -2,6 +2,7 @@ package com.sportrgu
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.google.android.gms.tasks.OnCompleteListener
@@ -10,8 +11,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GetTokenResult
 import com.sportrgu.data.cloud.FirebaseApi
 import com.sportrgu.data.models.people.Booking
+import com.sportrgu.fragment_bookings.FragmentBookings
 import com.sportrgu.fragment_login.ui.LoginFragment
 import com.sportrgu.fragment_check_in.ui.FragmentCheckIn
+import com.sportrgu.fragment_profile.FragmentProfile
 import com.sportrgu.fragment_sport_objects_list.helpers.TimeHelper
 import com.sportrgu.fragment_sport_objects_list.ui.FragmentListSportObjects
 import com.sportrgu.fragment_write_profile.ui.WriteProfileFragment
@@ -127,4 +130,34 @@ class MainActivity: AppCompatActivity() {
             })
         }
     }*/
+
+    fun showProfileFragment(){
+        val newProfileFragment = FragmentProfile()
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.id_frame_container, newProfileFragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun showBookingsFragment(){
+        val newBookingFragment = FragmentBookings()
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.id_frame_container, newBookingFragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun showSportObjectsListAfterSignOut(){
+        val newFragment = FragmentListSportObjects()
+
+        supportFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.id_frame_container, newFragment)
+            .commit()
+    }
 }

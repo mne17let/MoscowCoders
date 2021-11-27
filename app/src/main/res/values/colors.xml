@@ -24,6 +24,8 @@
 
     <color name="my_gray">#BABABA</color>
 
+    <color name="red">#FF0000</color>
+
     <color name="item_list_sport_objects_background">#DADADA</color>
 
     <color name="status_open_item_list_sport_objects_title">#4CAF50</color>

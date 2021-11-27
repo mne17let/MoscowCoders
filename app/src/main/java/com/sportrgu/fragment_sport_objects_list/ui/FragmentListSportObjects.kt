@@ -47,7 +47,7 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
 
     // ActionBar
     private lateinit var helloTextView: TextView
-    private lateinit var buttonProfileSettings: Button
+    private lateinit var buttonOpenProfile: Button
 
     private val list = mutableListOf<UiSportObject>()
 
@@ -67,7 +67,7 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
         progressBar = view.findViewById(R.id.id_progress_bar_list_sport_objects)
         mainContent = view.findViewById(R.id.id_main_content_fragment_list_sport_objects)
         helloTextView = view.findViewById(R.id.id_textview_hello_name)
-        buttonProfileSettings = view.findViewById(R.id.id_button_open_settings)
+        buttonOpenProfile = view.findViewById(R.id.id_button_open_profile)
 
         setRecyclerView()
         setDataSportObjectsChanged()
@@ -86,8 +86,9 @@ class FragmentListSportObjects: Fragment(R.layout.fragment_list_sport_objects),
     }
 
     private fun setSettingsButton(){
-        buttonProfileSettings.setOnClickListener {
-            Toast.makeText(requireContext(), "Когда-нибудь вам будут доступны настройки", Toast.LENGTH_SHORT).show()
+        buttonOpenProfile.setOnClickListener {
+            (activity as MainActivity).showProfileFragment()
+            // Toast.makeText(requireContext(), "Когда-нибудь вам будут доступны настройки", Toast.LENGTH_SHORT).show()
         }
     }
 

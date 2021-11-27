@@ -17,10 +17,18 @@ class TimeHelper {
     }
 
     fun parseStringFromMilliseconds(milliseconds: Long): String{
-        val dateFormat = SimpleDateFormat("hh:mm dd-MM-yyyy", Locale.CANADA)
+        // val dateFormat = SimpleDateFormat("hh:mm dd-MM-yyyy", Locale.CANADA)
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = milliseconds
-        return calendar.time.toString()
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        val minute = calendar.get(Calendar.MINUTE)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val month = calendar.get(Calendar.MONTH)
+        val year = calendar.get(Calendar.YEAR)
+
+        val stringDateMyFormat: String = "$hour:$minute $day-$month-$year"
+
+        return stringDateMyFormat
     }
 
 }

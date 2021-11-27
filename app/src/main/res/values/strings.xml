@@ -38,6 +38,8 @@
 
     <string name="button_open_settings">Настройки</string>
 
+    <string name="button_open_profile">Профиль</string>
+
     <string name="item_gender_male">Мужчина</string>
     <string name="item_gender_female">Женщина</string>
 

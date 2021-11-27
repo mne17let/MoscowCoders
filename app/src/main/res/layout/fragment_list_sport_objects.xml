@@ -41,7 +41,7 @@
                 android:layout_gravity="center"/>
 
             <Button
-                android:id="@+id/id_button_open_settings"
+                android:id="@+id/id_button_open_profile"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:layout_marginHorizontal="4dp"
-                android:text="@string/button_open_settings"
+                android:text="@string/button_open_profile"
                 android:drawableLeft="@drawable/ic_settings"
                 android:drawableTint="@color/black"
                 android:padding="4dp"

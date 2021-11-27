@@ -11,7 +11,7 @@ interface FirebaseApi {
     fun getAuthToken(@Query("auth") token: String): Call<String>
 
     @PUT("https://moscowcoders-default-rtdb.firebaseio.com/people/{user_id}/listOfBookings/{openTimeString}.json")
-    fun sendBookingsList(
+    fun sendNewBooking(
         @Path("user_id") user_id: String,
         @Path("openTimeString") openTimeString: String,
         @Body booking: Booking
