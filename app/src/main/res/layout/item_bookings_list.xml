@@ -2,16 +2,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:layout_marginBottom="4dp"
+    android:background="@color/design_default_color_primary">
 
-    <TextView
-        android:id="@+id/id_item_booking_sport_object_name"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/id_item_booking_start_time"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/id_item_booking_sport_object_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/id_item_booking_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/id_delete_booking_button_in_booking_item"
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:drawableLeft="@drawable/ic_delete_booking"
+        android:drawableTint="@color/red"
+        android:layout_weight="0"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="4dp"
+        android:padding="0dp"
+        />
 
 </LinearLayout>
